@@ -1,0 +1,72 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+
+site_name: Hello mkdocstrings
+site_url:
+  !ENV [
+    READTHEDOCS_CANONICAL_URL,
+    SITE_URL,
+    "https://liblaf.github.io/hello-mkdocstrings/"
+  ]
+site_author: "{{ author_name }}"
+repo_name: "liblaf/hello-mkdocstrings"
+repo_url: "https://github.com/liblaf/hello-mkdocstrings"
+edit_uri: blob/main/docs/
+
+theme:
+  name: material
+  palette:
+    - media: (prefers-color-scheme)
+      toggle:
+        icon: material/brightness-auto
+        name: Auto
+    - scheme: default
+      primary: teal
+      accent: purple
+      media: "(prefers-color-scheme: light)"
+      toggle:
+        icon: material/weather-sunny
+        name: Light Mode
+    - scheme: slate
+      primary: black
+      accent: lime
+      media: "(prefers-color-scheme: dark)"
+      toggle:
+        icon: material/weather-night
+        name: Dark Mode
+
+plugins:
+  - mkdocstrings:
+      default_handler: python
+      enable_inventory: true
+      handlers:
+        python:
+          inventories:
+            - https://docs.python.org/3/objects.inv
+          options:
+            # General
+            allow_inspection: true
+            force_inspection: true
+            # Headings
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            # Members
+            inherited_members: true
+            filters:
+              - "!^_[^_]"
+              - "!__all__"
+            summary: true
+            # Docstrings
+            docstring_style: google
+            docstring_options:
+              ignore_init_summary: true
+            docstring_section_style: list
+            merge_init_into_class: true
+            show_if_no_docstring: true
+            # Signatures
+            show_signature_annotations: true
+            separate_signature: true
+            signature_crossrefs: true
+
+watch:
+  - docs/
+  - src/
