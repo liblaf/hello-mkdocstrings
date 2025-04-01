@@ -35,7 +35,7 @@ version = "0.0.0"
 only-include = ["src/"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/hello"]
+packages = ["src/foo"]
 
 [tool.uv]
 default-groups = ["build", "docs"]

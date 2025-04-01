@@ -1,4 +1,4 @@
-"""Docstrings for [hello][hello]."""
+"""Docstrings for [foo][foo]."""
 
 import lazy_loader as lazy
 
